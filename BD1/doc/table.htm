@@ -1,0 +1,338 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<title>login</title>
+<style type="text/css">
+    .titulo { font-family: verdana, arial, helvética; 
+              font-size: 12;
+              color: #009966;
+    }
+    .planteo { font-family: verdana, arial, helvética;
+               font-size: 14;
+               font-weight: bold;
+               color: #0000ff;
+    }							
+    .detalle { font-family: verdana, arial, helvética;
+               font-size: 12;
+    }
+    .tabla { font-family: verdana, arial, helvética;
+             font-size: 12; 
+             color: #0000ff;
+    }
+    .lista { font-family: verdana, arial, helvética;
+             font-size: 12;
+             background-color: #f6f6f6;
+             color: #666666;
+    }
+    .des { font-family: verdana, arial, helvética;
+           font-size: 12;
+           font-weight: bold;
+           background-color: #ffffff;
+           color: #000000;
+    }
+</style>
+</head>
+<body>
+
+<a name="_alter"></a>
+<table bgcolor="f6f6f6" border="1" cellpadding="5" width="100%">
+<tr><td class="planteo" valign="top">alter table</td></tr>
+
+<tr><td><pre class="detalle">
+<b>ALTER TABLE</b> nombre_tabla
+    { [ <b>ALTER COLUMN</b> nombre_columna <b>nuevo_tipo_dato</b>
+        [ <span class="tabla"> null | not null </span> ] 
+        | <b>ADD</b>
+        { nombre_columna <b>tipo_dato</b>
+        [ <span class="tabla">default</span> { expresión } ]
+        [ <span class="tabla">identity | null | not null </span> ]
+        [ <span class="tabla"><b>def_constraint</b></span> ]
+        [ , ... ] }
+        | <b>DROP COLUMN</b> { nombre_columna [ ,... ] }
+        | <b>[WITH CHECK | WIH NOCHECK ]
+            ADD { CONSTRAINT</b> <span class="tabla"><b>def_constraint</b></span> [ , ... ] }
+        | <b>DROP { CONSTRAINT</b> nombre_constraint] [ , ... ] }
+      ] 
+    } 
+
+< <span class="tabla">def_constraint > ::=</span>> 
+    [ <b>CONSTRAINT</b> nombre ] 
+    { [ { <b>PRIMARY KEY | UNIQUE } 
+            [ CLUSTERED | NONCLUSTERED</b> ] ] 
+            [ { ( columna [ ASC | DESC ] [ ,...n ] ) } ]
+
+        | [ [ <b>FOREIGN KEY</b> ] 
+            [ { ( columna [ ASC | DESC ] [ ,...n ] ) } ]
+            <b>REFERENCES</b> tabla_referenciada [ ( columna, n ) ] 
+            [ <b>ON DELETE</b> { CASCADE | NO ACTION } ] 
+            [ <b>ON UPDATE</b> { CASCADE | NO ACTION } ] 
+            [ <b>NOT FOR REPLICATION</b> ] 
+        ] 
+        | <b>CHECK</b> [ NOT FOR REPLICATION ] 
+        ( expresión_lógica ) 
+    } 
+</pre></td></tr>
+
+<tr><td>
+<table border="0" cellpadding="3" align="left" width="100%" class="lista">
+<tr><td class="des" valign="top" width="25%">alter column</td>
+<td>Especifica que la columna dada va a cambiarse o modificarse.</td></tr>
+<tr><td class="des" valign="top" width="25%">add</td>
+<td>Especifica que se agregan una o más definiciones de columna.</td></tr>
+<tr><td class="des" valign="top" width="25%">add constraint</td>
+<td>Especifica que se agrega una definición de restricción.</td></tr>
+<tr><td class="des" valign="top" width="25%">with check | noncheck</td>
+<td>Especifica si se deben o no realizar las validaciones de datos en las filas
+ya existentes, para implementarla.</td></tr>
+<tr><td class="des" valign="top" width="25%">drop column</td>
+<td>Quita la definición de la columna especificada</td></tr>
+<tr><td class="des" valign="top" width="25%">drop constraint</td>
+<td>Quita la restricción especificada.</td></tr>
+</table></td></tr>
+
+<tr><td class="titulo">
+Agrega una nueva columna a la tabla.
+</td></tr>
+
+<tr><td><pre class="detalle">
+<b>ALTER TABLE</b> doc_exa ADD column_b VARCHAR(20) NULL
+GO
+</pre></td></tr>
+
+<tr><td class="titulo">
+Quita una columna de la tabla.
+</td></tr>
+
+<tr><td><pre class="detalle">
+<b>ALTER TABLE</b> doc_exb DROP COLUMN column_b
+GO
+</pre></td></tr>
+
+<tr><td class="titulo">
+Agrega una columna con una restricción a la tabla.
+</td></tr>
+
+<tr><td><pre class="detalle">
+<b>ALTER TABLE</b> doc_exc ADD column_b VARCHAR(20) NULL 
+   CONSTRAINT exb_unique UNIQUE
+GO
+</pre></td></tr>
+
+<tr><td class="titulo">
+Agrega una restricción a la tabla. La cláusula NOCHECK no valida la condición en
+las filas ya existentes.
+</td></tr>
+
+<tr><td><pre class="detalle">
+<b>ALTER TABLE</b> doc_exd WITH NOCHECK 
+ADD CONSTRAINT exd_check CHECK (column_a > 1)
+GO
+</pre></td></tr>
+
+<tr><td class="titulo">
+Agrega una restricción como primary key y otra restricción como foreign key.
+</td></tr>
+
+<tr><td><pre class="detalle">
+<b>ALTER TABLE</b> doc_exe 
+ADD CONSTRAINT doc_exe_pk primary key (column_a),
+       CONSTRAINT doc_exe_fk foreign key (column_b) references doc_exa
+GO
+</pre></td></tr>
+
+</table>
+
+<br />
+<a name="_create"></a>
+<table bgcolor="f6f6f6" border="1" cellpadding="5" width="100%">
+<tr><td class="planteo" valign="top">create table</td></tr>
+
+<tr><td><pre class="detalle">
+<b>CREATE TABLE</b> nombre_tabla
+    ( { nombre_columna <b>tipo_dato</b>
+        [ <span class="tabla">default</span> { expresión } ]
+        [ <span class="tabla">identity | null | not null </span> ]
+        [ <span class="tabla"><b>definición_constraint</b></span> ]
+        [, ... ]
+        [,<span class="tabla"><b>definición_constraint</b></span> ]
+        [, ... ]
+    ) 
+
+< <span class="tabla">definición_constraint > ::=</span>> 
+    [ <b>CONSTRAINT</b> nombre ] 
+    { [ { <b>PRIMARY KEY | UNIQUE } 
+            [ CLUSTERED | NONCLUSTERED</b> ] ] 
+            [ { ( columna [ ASC | DESC ] [ ,...n ] ) } ]
+
+        | [ [ <b>FOREIGN KEY</b> ] 
+            [ { ( columna [ ASC | DESC ] [ ,...n ] ) } ]
+            <b>REFERENCES</b> tabla_referenciada [ ( columna, n ) ] 
+            [ <b>ON DELETE</b> { CASCADE | NO ACTION } ] 
+            [ <b>ON UPDATE</b> { CASCADE | NO ACTION } ] 
+            [ <b>NOT FOR REPLICATION</b> ] 
+        ] 
+        | <b>CHECK</b> [ NOT FOR REPLICATION ] 
+        ( expresión_lógica ) 
+    } 
+</pre></td></tr>
+
+<tr><td>
+<table border="0" cellpadding="3" align="left" width="100%" class="lista">
+<tr><td class="des" valign="top" width="25%">tipo de dato</td>
+<td>Especifica el tipo de datos de la columna. Se permiten los tipos de datos del
+sistema o definidos por el usuario.</td></tr>
+<tr><td class="des" valign="top" width="25%">default</td>
+<td>Especifica el valor suministrado para la columna cuando no se ha especificado
+explícitamente un valor durante la inserción. Las definiciones DEFAULT se pueden
+aplicar a cualquier columna, excepto a las definidas como timestamp o aquellas
+que tengan la propiedad IDENTITY. Las definiciones DEFAULT se quitan cuando se
+quita la tabla. Como valor predeterminado sólo se puede utilizar un valor
+constante (por ejemplo, una cadena de caracteres), una función del sistema
+(como SYSTEM_USER()), o NULL.</td></tr>
+<tr><td class="des" valign="top" width="25%">identity</td>
+<td>Indica que la nueva columna es una columna identidad. Cuando se agrega una
+nueva fila a la tabla, Microsoft® SQL Server™ proporciona un valor incremental
+y único a la columna. Las columnas de identidad se utilizan normalmente junto
+con restricciones PRIMARY KEY para que actúen como identificador exclusivo de
+fila para la tabla. La propiedad IDENTITY puede asignarse a las columnas tinyint,
+smallint, int, bigint, decimal(p,0) o numeric(p,0). Sólo se puede crear una
+columna de identidad por tabla. Los valores predeterminados enlazados y las
+estricciones DEFAULT no se pueden utilizar con una columna identidad.
+Es necesario especificar la inicialización y el incremento, o no especificar
+ninguno de los dos. Si no se especifica ninguno, el valor predeterminado es (1,1).
+</td></tr>
+<tr><td class="des" valign="top" width="25%">null | not null</td>
+<td>Son palabras clave que determinan si se permiten o no valores NULL en la
+columna. NULL no es estrictamente una restricción, pero se puede especificar de
+la misma forma que NOT NULL</td></tr>
+<tr><td class="des" valign="top" width="25%">primary key</td>
+<td>Es una restricción que exige la integridad de entidad para una o varias 
+columnas dadas a través de un índice único. Sólo se puede crear una restricción
+PRIMARY KEY por cada tabla.</td></tr>
+<tr><td class="des" valign="top" width="25%">unique</td>
+<td>Es una restricción que proporciona la integridad de entidad para una o
+varias columnas dadas a través de un índice único. Una tabla puede tener varias
+restricciones UNIQUE.</td></tr>
+<tr><td class="des" valign="top" width="25%">clustered nonclustered</td>
+<td>Son palabras clave que indican que se ha creado un índice agrupado o no 
+agrupado para la restricción PRIMARY KEY o UNIQUE. De forma predeterminada,
+el valor de las restricciones PRIMARY KEY es CLUSTERED, y el de las restricciones
+UNIQUE es NONCLUSTERED.</td></tr>
+<tr><td class="des" valign="top" width="25%">foreign key references</td>
+<td>Es una restricción que proporciona integridad referencial para los datos de
+la columna o columnas. Las restricciones FOREIGN KEY requieren que cada valor de
+la columna exista en la columna de referencia correspondiente de la tabla a la
+que se hace referencia. Las restricciones FOREIGN KEY pueden hacer referencia
+sólo a columnas que sean restricciones PRIMARY KEY o UNIQUE en la tabla de
+referencia o a columnas a las que se haga referencia en UNIQUE INDEX en la 
+tabla de referencia. </td></tr>
+<tr><td class="des" valign="top" width="25%">on delete</td>
+<td>Especifica qué acción tiene lugar en una fila de la tabla creada, si esa
+fila tiene una relación referencial y la fila a la que hace referencia se
+elimina en la tabla primaria. El valor predeterminado es NO ACTION.
+Si se especifica CASCADE y se elimina una fila de la tabla primaria, también se
+elimina la fila de la tabla desde donde se hace referencia.</td></tr>
+<tr><td class="des" valign="top" width="25%">on update</td>
+<td>Especifica qué acción tiene lugar en una fila de la tabla creada, si esa 
+fila tiene una relación referencial y la fila a la que hace referencia se 
+actualiza en la tabla primaria. El valor predeterminado es NO ACTION. 
+Si se especifica CASCADE, la fila se actualiza en la tabla de referencia si esa
+fila se actualiza en la tabla primaria.</td></tr>
+<tr><td class="des" valign="top" width="25%">not for replication</td>
+<td>Indica que la propiedad IDENTITY no debe exigirse cuando un inicio de sesión 
+duplicado, como sqlrepl, inserta datos en la tabla.
+Las filas duplicadas deben conservar los valores de clave que se les asignó en
+la base de datos de publicación; la cláusula NOT FOR REPLICATION asegura que las
+filas insertadas por un proceso de duplicación no reciban nuevos valores de
+identidad. Las filas insertadas por otros inicios de sesión continúan recibiendo
+los nuevos valores de identidad de la forma habitual. Se recomienda que defina
+también una restricción CHECK con NOT FOR REPLICATION para asegurar que los
+valores de identidad asignados se encuentran en el intervalo deseado de la base 
+de datos actual..</td></tr>
+<tr><td class="des" valign="top" width="25%">check</td>
+<td>Es una restricción que exige la integridad del dominio al limitar los 
+valores posibles que se pueden escribir en una o varias columnas.</td></tr>
+</table></td></tr>
+
+<tr><td class="titulo">
+Crea la tabla autores especificando la columna idautor como primary key siendo 
+autoincrementable
+</td></tr>
+
+<tr><td><pre class="detalle">
+<b>create table</b> autores
+ 
+( idautor int identity, 
+  nombre varchar(20) not null, 
+  apellido varchar(20) not null, 
+  fecha_nac datetime null,
+  primary key(idautor)
+)
+</pre></td></tr>
+
+<tr><td class="titulo">
+Crea la tabla titulos declarando la columna idtitulo como primary key y a la
+columna tipo como foreign key referenciada a la tabla tipo_publicacion.
+</td></tr>
+
+<tr><td><pre class="detalle">
+<b>create table</b> titulos 
+
+( idtitulo varchar(6) not null, 
+  titulo varchar(50) not null, 
+  tipo smallint  null, 
+  precio money null,
+  primary key(idtitulo),
+  foreingn key(tipo) references tipo_publicacion
+)
+</pre></td></tr>
+
+<tr><td class="titulo">
+Crea la tabla autor_titulo declarando como primary key a las columnas (idautor y
+a la columna idtitulo y como foreign key a la columna idautorreferenciada a la 
+tabla autores y como foreign key a la columna idtitulo referenciada a la tabla
+titulos.
+</td></tr>
+
+<tr><td><pre class="detalle">
+<b>create table</b> autor_titulo 
+
+( idautor int not null, 
+  idtitulo varchar(6) not null, 
+  primary key (idautor, idtitulo), 
+  foreign key (idautor) references autores, 
+  foreign key (idtitulo) references titulos 
+)
+</pre></td></tr>
+
+<tr><td class="titulo">
+Crea la tabla titulos_discontinuados declarando a la columna idtitdis como
+primary key y como foreign key, asignándole un valor por defecto.
+</td></tr>
+
+<tr><td><pre class="detalle">
+<b>create table</b> titulos_discontinuados 
+
+( idtitdis varchar(6) not null, 
+  precionuevo money default 100.00,
+  primary key(idtisdis),
+  foreign key(idtisdis) references titulos
+)
+</pre></td></tr>
+</table>
+
+<br />
+<a name="_drop"></a>
+<table bgcolor="f6f6f6" border="1" cellpadding="5" width="100%">
+<tr><td class="planteo" valign="top">drop table</td></tr>
+<tr><td class="detalle"><br />
+<b>drop table</b> nombre
+<br />&nbsp;</td></tr>
+<tr><td class="titulo">
+Elimina una tabla base de datos actual. 
+</td></tr>
+</table>
+
+</body>
+</html>

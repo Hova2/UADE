@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<title>login</title>
+<style type="text/css">
+    .titulo { font-family: verdana, arial, helvética; 
+              font-size: 12;
+              color: #009966;
+    }
+    .planteo { font-family: verdana, arial, helvética;
+               font-size: 14;
+               font-weight: bold;
+               color: #0000ff;
+    }							
+    .detalle { font-family: verdana, arial, helvética;
+               font-size: 12;
+    }
+    .tabla { font-family: verdana, arial, helvética;
+             font-size: 12; 
+             color: #0000ff;
+    }
+    .lista { font-family: verdana, arial, helvética;
+             font-size: 12;
+             background-color: #f6f6f6;
+             color: #666666;
+    }
+    .des { font-family: verdana, arial, helvética;
+           font-size: 12;
+           font-weight: bold;
+           background-color: #ffffff;
+           color: #000000;
+    }
+</style>
+</head>
+<body>
+
+<a name="_alter"></a>
+<table bgcolor="f6f6f6" border="1" cellpadding="5" width="100%">
+<tr><td class="planteo" valign="top">alter view</td></tr>
+
+<tr><td><pre class="detalle">
+<b>ALTER VIEW</b> nombre [ ( columna [ ,...n ] ) ]
+AS 
+<span class='tabla'>sentencia_select</span>
+[ WITH CHECK OPTION ] 
+</pre></td></tr>
+
+<tr><td>
+<table border="0" cellpadding="3" align="left" width="100%" class="lista">
+<tr><td class="des" valign="top" width="25%">nombre</td>
+<td>Es la vista que va a cambiar.<br />
+No afecta a los procedimientos almacenados ni a los desencadenadores 
+dependientes, ni a los permisos establecidos.
+</td></tr>
+<tr><td class="des" valign="top" width="25%">columna</td>
+<td>Es el nombre de una o más columnas, separadas por comas, que van a formar 
+parte de la vista .</td></tr>
+<tr><td class="des" valign="top" width="25%">sentencia</td>
+<td>La instrucción select que defina la vista.</td></tr>
+<tr><td class="des" valign="top" width="25%">with check option</td>
+<td>Impone que todas las instrucciones de modificación de datos ejecutadas 
+contra la vista se adhieran a los criterios establecidos en la sentencia  
+select que define la vista.</td></tr>
+</table></td></tr>
+
+<tr><td class="titulo">
+Modifica una vista creada anteriormente.
+</td></tr>
+
+<tr><td><pre class="detalle">
+USE pubs
+<b>ALTER VIEW</b> libros_por_autor ([titulo del libro], [apellido del autor],
+[nombre del autor]
+AS
+SELECT title, au_lname, au_fname
+FROM ( titles t INNER JOIN titleauthor ta ON t.title_id = ta.title_id )
+	INNER JOIN authors a ON a.au_id = a.au_id
+GO
+</pre></td></tr>
+</table>
+
+<br />
+<a name="_create"></a>
+<table bgcolor="f6f6f6" border="1" cellpadding="5" width="100%">
+<tr><td class="planteo" valign="top">create view</td></tr>
+
+<tr><td><pre class="detalle">
+<b>CREATE VIEW</b> nombre [ ( columna [ ,...n ] ) ]
+
+AS 
+<span class='tabla'>sentencia_select</span>
+[ WITH CHECK OPTION ] 
+</pre></td></tr>
+
+<tr><td>
+<table border="0" cellpadding="3" align="left" width="100%" class="lista">
+<tr><td class="des" valign="top" width="25%">nombre</td>
+<td>Es el nombre de la vista. Los nombres de las vistas deben cumplir las reglas
+de los identificadores. Especificar el propietario de la vista es opcional.<br>
+Para crear una vista, el usuario debe tener permisos CREATE VIEW y permisos SELECT en las tablas, vistas y funciones de valores de tabla a las que se hace referencia en la vista, y permisos EXECUTE en las funciones de valores escalares
+a las que se llama en la vista.
+</td></tr>
+<tr><td class="des" valign="top" width="25%">columna</td>
+<td>Es el nombre que se va a utilizar para una columna en una vista. Sólo es necesario asignar un nombre a una columna en CREATE VIEW cuando una columna
+proviene de una expresión aritmética, una función o una constante; cuando dos o más columnas puedan tener el mismo nombre (normalmente, debido a una combinación); o cuando una columna de una vista recibe un nombre distinto al de
+la columna de la que proviene. Los nombres de columna se pueden asignar también en la instrucción SELECT.<br /> 
+Si no se especifica el nombre de lacolumna, éstas adquieren los mismos nombres que las columnas de la instrucción SELECT. 
+</td></tr>
+<tr><td class="des" valign="top" width="25%">sentencia select</td>
+<td>Es la instrucción SELECT que define la vista. Puede utilizar más de una tabla y otras vistas. Para seleccionar los objetos a los que se hace referencia en la cláusula SELECT de una vista creada, es necesario tener los permisos adecuados.</td></tr>
+<tr><td class="des" valign="top" width="25%">with check option</td>
+<td>Exige que todas las instrucciones de modificación de datos ejecutadas contra la vista se adhieran a los criterios establecidos en select_statement.
+Cuando una fila se modifica mediante una vista, WITH CHECK OPTION garantiza que los datos permanecerán visibles en toda la vista después de confirmar la modificación.
+</td></tr>
+</table></td></tr>
+
+<tr><td class="titulo">
+Crea una vista utilizando un bloque case para proyectar los datos.
+</td></tr>
+
+<tr><td><pre class="detalle">
+<b>CREATE VIEW</b> vw_elementos
+AS
+SELECT elemento, 
+    color = <b>case</b> codcolor <b>when</b> 'v' <b>then</b> 'verde'
+                                    <b>when</b> 'r' <b>then</b> 'rojo'
+                                    <b>else</b> 'otro' <b>end</b>					 	
+FROM elementos
+GO
+</pre></td></tr>
+
+<tr><td class="titulo">
+Crea una vista definiendo los nombres de las columnas en la cabecera del create.
+</td></tr>
+
+<tr><td><pre class="detalle">
+USE pubs
+<b>CREATE VIEW</b> lista_de_precios ([titulo del libro], tipo, [precio de lista])
+AS
+    SELECT title, type, price FROM titles
+GO
+</pre></td></tr>
+
+<tr><td class="titulo">
+Crea una vista reuniendo tres tablas mediante la cláusula JOIN.
+</td></tr>
+
+<tr><td><pre class="detalle">
+USE pubs
+<b>CREATE VIEW</b> lbros_por_autor
+AS
+SELECT libro=title, apellido=au_lname, nombre=au_fname
+FROM ( titles t INNER JOIN titleauthor ta ON t.title_id = ta.title_id )
+	INNER JOIN authors a ON a.au_id = a.au_id
+GO
+</pre></td></tr>
+</table>
+
+<br />
+<a name="_drop"></a>
+<table bgcolor="f6f6f6" border="1" cellpadding="5" width="100%">
+<tr><td class="planteo" valign="top">drop view</td></tr>
+<tr><td class="detalle"><br />
+<b>drop view</b> nombre
+<br />&nbsp;</td></tr>
+<tr><td class="titulo">
+Elimina una vista base de datos actual. 
+</td></tr>
+<tr><td><pre class="detalle">
+USE pubs
+IF EXISTS (SELECT name FROM sysobjects
+         WHERE name = 'titles_view' AND type = 'V')
+   <b>DROP VIEW</b> titles_view
+GO
+</pre></td></tr>
+</table>
+
+</body>
+</html>
