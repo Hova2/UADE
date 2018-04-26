@@ -1,0 +1,378 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<title>select</title>
+<style type="text/css">
+    .titulo { font-family: verdana, arial, helvética; font-size: 12;
+		          color: #0000ff; }
+    .planteo { font-family: verdana, arial, helvética; font-size: 14;
+		           font-weight: bold; color: orange; }
+    .palabra { font-family: verdana, arial, helvética; font-size: 12;
+		           color: orange; }							
+    .detalle { font-family: verdana, arial, helvética; font-size: 12; }
+    .lista { font-family: verdana, arial, helvética; font-size: 12;
+                  background-color: #f6f6f6; color: #666666; }
+    .des { font-family: verdana, arial, helvética; font-size: 12;
+                  font-weight: bold; background-color: #ffffff;
+                  color: #000000; }
+    .ejemplo { font-family: verdana, arial, helvética; font-size: 12;
+                          color: #009966; }
+    .mensaje { font-family: verdana, arial, helvética; font-size: 12;
+		           color: #0099dd; }
+
+</style>
+</head>
+<body>
+
+<a name="_select"></a>
+<table bgcolor="f6f6f6" border="1" cellpadding="5" width="100%">
+<tr><td class="planteo">
+ select
+</td></tr>
+<tr><td class="titulo">
+Obtiene filas de la base de datos y permite realizar la selección de una o 
+varias filas o columnas de una o varias tablas.
+</td></tr>
+<tr><td><pre class="detalle">
+
+<B>SELECT</B> lista de columnas
+[ <B>INTO</B> tabla destino ] 
+<B>FROM </B>orígen de datos 
+[ <B>WHERE</B> condición ] 
+[ <B>GROUP BY</B> agrupamiento ] 
+[ <B>HAVING</B> condición del agrupamiento ] 
+[ <B>ORDER BY</B> ordenamiento [ ASC | DESC ] ] 
+</pre></td></tr>
+
+<tr><td>
+<table border="0" cellpadding="3" align="left" width="100%" class="lista">
+
+<tr><td class="des" valign="top" width="25%">SELECT</td>
+<td>Especifica las columnas que va a devolver la consulta.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">INTO</td>
+<td>Crea una nueva tabla e inserta en ella las filas resultantes de la consulta.
+</td></tr>
+
+<tr><td class="des" valign="top" width="25%">FROM</td>
+<td>Especifica las tablas o vistas de las que se van a obtener filas.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">WHERE</td>
+<td>Especifica una condición de búsqueda para restringir las filas que se van a 
+devolver.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">GROUP BY</td>
+<td>Especifica los grupos en los que se van colocar las filas de salida.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">HAVING</td>
+<td>Especifica una condición de búsqueda de un grupo.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">ORDER BY</td>
+<td>Especifica el orden del conjunto de resultados.</td></tr>
+
+</table></td></tr>
+</table>
+
+<br />
+<a name="_select"></a>
+<table bgcolor="f6f6f6" border="1" cellpadding="5" width="100%">
+<tr><td class="planteo">
+  select (cláusula)
+</td></tr>
+<tr><td class="titulo">
+Especifica una lista de columnas que va a devolver la consulta. Pueden estar
+definidas por nombres de columnas de tablas o vistas especificadas en la
+cláusula from, o representar expresiones, constantes, variables, funciones; o
+cualquier combinación de éstas.
+</td></tr>
+<tr><td><pre class="detalle">
+
+<B>SELECT</B> [ ALL | DISTINCT ] [ TOP n [PERCENT] ] 
+    {    * 
+        | { tabla | vista | alias }.* 
+        |     { columna | expresión  } 
+            [ [ AS ] alias_columna ] 
+        | alias_columna = expresión 
+    }    [ ,...n ] 
+</pre></td></tr>
+
+<tr><td>
+<table border="0" cellpadding="3" align="left" width="100%" class="lista">
+<tr><td class="des" valign="top" width="25%">ALL</td>
+<td>Especifica que pueden aparecer filas duplicadas en el conjunto de resultados. 
+ALL es el valor predeterminado.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">DISTINCT</td>
+<td>Especifica que sólo pueden aparecer filas exclusivas en el conjunto de 
+resultados. Los valores NULL se consideran iguales a efectos de la palabra clave 
+DISTINCT.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">TOP n</td>
+<td>Especifica que sólo se van a utilizar las primeras n filas del conjunto de 
+resultados de la consulta; n es un valor entero.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">PERCENT</td>
+<td>Si se especifica PERCENT, sólo se va a utilizar el primer n por ciento de 
+filas del conjunto de resultados. Cuando se especifica con PERCENT, n debe ser 
+un entero entre 0 y 100.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">tabla | vista |alias</td>
+<td>Nombre de la tabla o vista de donde se obtienen los datos.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">columna</td>
+<td>Es el nombre de una columna que se va a devolver.Si existen nombre
+duplicados en distintos orígenes, la referencia al nombre de la columna debe
+estar calificado.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">expresión</td>
+<td>Es un nombre de columna, constante, función, o una combinación de nombres de 
+columnas, constantes y funciones conectados mediante operadores, o una 
+subconsulta.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">AS alias_columna</td>
+<td>Es un nombre alternativo para reemplazar el nombre de la columna en el 
+conjunto de resultados de la consulta. </td></tr>
+
+</table></td></tr>
+
+<tr><td class="mensaje">
+Ejemplos:
+</td></tr>
+<tr><td><pre class="detalle">
+
+<span class='ejemplo'>-- proyecta la totalidad de la tabla authors.</span>
+<B>select *</B> from authors
+GO
+
+<span class='ejemplo'>-- proyecta todas las filas de las columnas city, state.</span>
+<B>select all</B> city, state from authors
+GO
+
+<span class='ejemplo'>-- excluye las filas duplicadas de la proyección.</span>
+<B>select distinct</B> city, state from authors
+GO
+
+<span class='ejemplo'>-- agrega una expresión y define un encabezado.</span>
+<B>select</B> title, price, royalty, <B>price*royalty/100 AS derechos</B> from titles
+GO
+
+<span class='ejemplo'>-- idem anterior.</span>
+<B>select</B> title, price, royalty, <B>derechos=price*royalty/100</B>  from titles
+GO
+
+<span class='ejemplo'>-- proyecta las 3 primeras filas de la tabla.</span>
+<B>select top 3</B> title, price, royalty from titles
+GO
+</pre></td></tr>
+</table>
+
+<br />
+<a name="_from"></a>
+<table bgcolor="f6f6f6" border="1" cellpadding="5" width="100%">
+<tr><td class="planteo">
+ from
+</td></tr>
+<tr><td class="titulo">
+Especifica las tablas, vistas, tablas derivadas y tablas combinadas que se 
+utilizan en las instrucciones DELETE, SELECT y UPDATE.</td></tr>
+
+<tr><td><pre class="detalle">
+
+<B>FROM</B> { tabla [ [ AS ] alias ] ] | vista [ [ AS ] alias ] ] } [, n...]
+</pre></td></tr>
+
+<tr><td>
+<table border="0" cellpadding="3" align="left" width="100%" class="lista">
+<tr><td class="des" valign="top" width="25%">tabla</td>
+<td>Es el nombre de una tabla que se va a utilizar en la instrucción.
+<BR>Si la tabla o la vista existe en otra base de datos del mismo equipo que 
+ejecuta Microsoft® SQL Server™, utilice un nombre totalmente calificado en la 
+forma database.owner.object_name. Si la tabla o la vista se encuentra fuera del 
+servidor local en un servidor vinculado, utilice un nombre de cuatro partes en 
+el formato linked_server.catalog.schema.object.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">vista</td>
+<td>Es el nombre de una vista. Una vista es una "tabla virtual", normalmente 
+creada como un subconjunto de las columnas de una o más tablas.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">alias</td>
+<td>Es un alias para la tabla o vista que se utiliza por comodidad o para 
+distinguirlas en una autocombinación o en una subconsulta. El alias suele ser un
+ nombre de la tabla abreviado, que se utiliza para hacer referencia a columnas 
+específicas de las tablas en una combinación. Si existe el mismo nombre de 
+columna en más de una tabla de la combinación, SQL Server requiere que el nombre
+ de la columna esté calificado por el nombre o el alias de la tabla. 
+<BR>(No se puede utilizar el nombre de la tabla si se ha definido un alias).
+</td></tr>
+</table></td></tr>
+
+<tr><td class="mensaje">
+Ejemplos de utilización del nombre calificado con y sin definición de un alias.
+</td></tr>
+<tr><td><pre class="detalle">
+
+<i class='ejemplo'>-- sin alias</i>
+<B>select</B> publishers.pub_id, pub_name, title 
+<B>from</B> publishers, titles
+GO
+<i class='ejemplo'>-- con alias</i>
+<B>select</B> p.pub_id, pub_name, title 
+<B>from</B> publishers p, titles
+GO
+</pre></td></tr>
+</table>
+
+<br />
+<a name="_where"></a>
+<table bgcolor="f6f6f6" border="1" cellpadding="5" width="100%">
+<tr><td class="planteo">
+ where
+</td></tr>
+<tr><td class="titulo">
+Especifica una condición de búsqueda para restringir las filas que se van a 
+devolver.
+</td></tr>
+
+<tr><td><pre class="detalle">
+
+<B>WHERE</B> { [ NOT ] <i class='mensaje'>< expresión_booleana ></i> 
+                [ { AND | OR } ] 
+                [ NOT ] <i class='mensaje'>< expresión_booleana ></i> [ ... ] } 
+</pre></td></tr>
+
+<tr><td>
+<table border="0" cellpadding="3" align="left" width="100%" class="lista">
+
+<tr><td class="des" valign="top" width="25%">where</td>
+<td>Limita las filas devueltas en el conjunto de resultados mediante el uso de 
+predicados. No hay límite en el número de predicados que se pueden incluir en 
+una condición de búsqueda.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">expresión_lógica</td>
+<td>Cualquier combinación entre variables, constantes, funciones y operadores de
+comparación o lógicos que devuelvan un valor booleano TRUE , FALSE o UNKNOWN.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">AND | OR</td>
+<td>Operadores lógicos que combinan expresiones booleanas. Cuando en una expresión 
+se utiliza más de un operador lógico, primero se evalúan los operadores AND y
+luego los operadores OR. Se puede cambiar el orden de la evaluación si se
+utilizan paréntesis.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">NOT</td>
+<td>Niega un predicado. NOT invierte el valor de cualquier expresión booleana.
+</td></tr>
+
+</table></td></tr>
+
+<tr><td class="mensaje">
+Detalle de las editoriales y los libros publicados por éstas.
+</td></tr>
+<tr><td><pre class="detalle">
+
+<B>select</B> p.*, t.*
+<B>from</B> publishers p, titles t
+<B>where</B> p.pub_id = t.pub.id
+GO
+</pre></td></tr>
+
+<tr><td class="mensaje">
+Nombre de los autores y libros de los mismos sobre negocios o psicología.
+</td></tr>
+<tr><td><pre class="detalle">
+
+<B>select</B> au_lname, au_fname, title, type
+<B>from</B> authors a, titles t, titleauthor ta
+<B>where</B> a.au_id = ta.au_id
+    <B class='titulo'>and</B> t.title_id = ta.title_id
+    <B class='titulo'>and</B> (type = 'business' <B 
+       class='titulo'>or</B> type = 'psychology')
+GO
+</pre></td></tr>
+</tr>
+</table>
+<br />
+<table>
+<a name="_groupby"></a>
+<table bgcolor="f6f6f6" border="1" cellpadding="5" width="100%">
+<tr><td class="planteo">
+ group by
+</td></tr>
+<tr><td class="titulo">
+Especifica los criterios de agrupamiento para obtener valores totales a cada grupo obtenido.</td></tr>
+
+<tr><td><pre class="detalle">
+
+[ <B>GROUP BY</B> { columna1 [ ,...columnaN] } 
+</pre></td></tr>
+
+<tr><td>
+<table border="0" cellpadding="3" align="left" width="100%" class="lista">
+
+<tr><td class="des" valign="top" width="25%">columna</td>
+<td>Es el criterio por el cuál se agrupa, generando un nuevo grupo por
+cada valor distinto. Si se especifica mas de una columna, el segundo criterio 
+determina un nuevo grupo si el anterior es el mismo. Los valores de totales se
+obtienen mediante las funciones count(), max(), min(), sum() o avg().
+<BR />
+</td></tr>
+
+<BR />
+Los valores NULL se tratan como los valores más bajos posibles.</td></tr>
+
+</table>
+
+<br />
+<a name="_order"></a>
+<table bgcolor="f6f6f6" border="1" cellpadding="5" width="100%">
+<tr><td class="planteo">
+ order by
+</td></tr>
+<tr><td class="titulo">
+Especifica el orden del conjunto de resultados.</td></tr>
+
+<tr><td><pre class="detalle">
+
+[ <B>ORDER BY</B> { expresión [ <B>ASC | DESC</B> ] }  [ ,...n] ] 
+</pre></td></tr>
+
+<tr><td>
+<table border="0" cellpadding="3" align="left" width="100%" class="lista">
+
+<tr><td class="des" valign="top" width="25%">expresión</td>
+<td>Especifica la columna según la que se ordenará. Se puede especificar una 
+columna de orden como un nombre o alias de columna (que puede estar calificado 
+con el nombre de una tabla o vista), una expresión o un entero no negativo que 
+representa la posición del nombre, alias o expresión en la lista de selección. 
+<BR />
+Se puede especificar varias columnas de orden. La secuencia de columnas de orden 
+en la cláusula ORDER BY define la estructura del conjunto ordenado de resultados.
+</td></tr>
+
+<tr><td class="des" valign="top" width="25%">ASC</td>
+<td>Indica que los valores de la columna especificada se deben ordenar de manera 
+ascendente, desde el valor más bajo al más alto.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">DESC</td>
+<td>Indica que los valores de la columna especificada se deben ordenar de manera 
+descendente, desde el valor más alto al valor más bajo.
+<BR />
+Los valores NULL se tratan como los valores más bajos posibles.</td></tr>
+
+</table></td></tr>
+
+<tr><td class="mensaje">
+Nombre de los autores y libros de los mismos ordenado por título y autor.
+</td></tr>
+<tr><td><pre class="detalle">
+
+<B>select</B> au_lname, au_fname, title
+<B>from</B> authors a, titles t, titleauthor ta
+<B>where</B> a.au_id = ta.au_id and t.title_id = ta.title_id
+<B>order by</B> title desc, 2, 3
+GO
+</pre></td></tr>
+</table>
+
+</body>
+</html>

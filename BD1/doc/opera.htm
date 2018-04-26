@@ -1,0 +1,343 @@
+<html>
+
+<head>
+
+<title>Operadores</title>
+<style>
+<!--
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:24.0pt;
+	font-family:"Times New Roman";
+	mso-font-kerning:18.0pt;
+	font-weight:bold;}
+h5
+	{margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	mso-outline-level:5;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h6
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	mso-outline-level:6;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+a:hover, span.MsoHyperlinkFollowed
+	{color:orange;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+code
+	{mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+pre
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+p.indent, li.indent, div.indent
+	{mso-style-name:indent;
+	margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 3.0cm 70.85pt 3.0cm;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:240870600;
+	mso-list-template-ids:903349844;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l1
+	{mso-list-id:1464419406;
+	mso-list-template-ids:1585106756;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+
+/* clases */
+.planteo { font-family: verdana, arial, helvética; font-size: 16;
+           font-weight: bold; color: #990099; background-color: #f3f3f3; }
+.ejemplo { font-family: verdana, arial, helvética; font-size: 14;
+                          font-weight: bold; color: orange; }
+
+-->
+</style>
+</head>
+
+<body lang=ES link=blue vlink=purple style='tab-interval:35.4pt'>
+<div class=Section1>
+
+<a name="_logico"></a>
+<h4 class='planteo'>Operadores de conjunto</h4>
+
+<p>Son operadores lógicos que comprueban la veracidad de alguna condición. 
+Devuelven el tipo de datos Boolean con valor TRUE o FALSE.</p>
+
+<table border=1 cellpadding=0 width=470 style='width:352.2pt;mso-cellspacing:
+ 1.5pt;mso-padding-alt:1.2pt 1.2pt 1.2pt 1.2pt'>
+ <tr>
+  <td width="29%" valign=top style='width:29.0%;padding:1.2pt 1.2pt 1.2pt 1.2pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b>Operador<o:p></o:p></b></p>
+  </td>
+  <td width="71%" valign=top style='width:71.0%;padding:1.2pt 1.2pt 1.2pt 1.2pt'>
+  <p class=MsoNormal align=center style='text-align:center'><b>Significado<o:p></o:p></b></p>
+  </td>
+ </tr>
+ <tr>
+  <td width="29%" valign=top style='width:29.0%;padding:1.2pt 1.2pt 1.2pt 1.2pt'>
+  <p class=ejemplo><a href='#_all'>ALL</a></p>
+  </td>
+  <td width="71%" valign=top style='width:71.0%;padding:1.2pt 1.2pt 1.2pt 1.2pt'>
+  <p class=MsoNormal>TRUE si el conjunto completo de comparaciones es TRUE.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="29%" valign=top style='width:29.0%;padding:1.2pt 1.2pt 1.2pt 1.2pt'>
+  <p class=ejemplo><a href='#_any'>ANY</a></p>
+  </td>
+  <td width="71%" valign=top style='width:71.0%;padding:1.2pt 1.2pt 1.2pt 1.2pt'>
+  <p class=MsoNormal>TRUE si cualquier miembro del conjunto de comparaciones es 
+TRUE.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="29%" valign=top style='width:29.0%;padding:1.2pt 1.2pt 1.2pt 1.2pt'>
+  <p class=ejemplo><a href='#_exists'>EXISTS</a></p>
+  </td>
+  <td width="71%" valign=top style='width:71.0%;padding:1.2pt 1.2pt 1.2pt 1.2pt'>
+  <p class=MsoNormal>TRUE<b> </b>si una subconsulta contiene a cualquiera de
+  las filas.</p>
+  </td>
+ </tr>
+ <tr>
+  <td width="29%" valign=top style='width:29.0%;padding:1.2pt 1.2pt 1.2pt 1.2pt'>
+  <p class=ejemplo><a href='#_in'>IN</a></p>
+  </td>
+  <td width="71%" valign=top style='width:71.0%;padding:1.2pt 1.2pt 1.2pt 1.2pt'>
+  <p class=MsoNormal>TRUE si el operando es igual a uno de la lista de
+  expresiones.</p>
+  </td>
+ </tr>
+</table>
+
+<a name="_all"></a>
+<h3 class='planteo'>ALL</h3>
+
+<p>Compara un valor escalar con un conjunto de valores de una sola columna. </p>
+
+<h5><span lang=EN-US style='mso-ansi-language:EN-US'>Sintaxis<o:p></o:p></span></h5>
+
+<p><i><span lang=EN-US style='mso-ansi-language:EN-US'>expresión escalar</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'> { = | &lt;&gt; | != | &gt; | &gt;=
+| !&gt; | &lt; | &lt;= | !&lt; } <span style='color:orange'>ALL</span> 
+<b>( </b><i>subquery </i><b>)</b></span></p>
+
+<h5>Argumentos</h5>
+
+<p><i><span lang=EN-US style='mso-ansi-language:EN-US'>expresión escalar</span></i></p>
+
+<p class=indent>Es cualquier expresión válida de Microsoft® SQL Server™.</p>
+
+<p>{ = | &lt;&gt; | != | &gt; | &gt;= | !&gt; | &lt; | &lt;= | !&lt; }</p>
+
+<p class=indent>Es un operador de comparación.</p>
+
+<p><i>subquery</i></p>
+
+<p class=indent>Es una subconsulta que devuelve un conjunto de resultados de
+una columna. El tipo de datos de la columna devuelta debe ser el mismo tipo de
+datos que el de <i>la </i><i><span lang=EN-US style='mso-ansi-language:EN-US'>expresión
+escalar</span></i>.</p>
+
+<h5>Tipos devueltos</h5>
+
+<p>Boolean</p>
+
+<h5>Valor del resultado</h5>
+
+<p>Devuelve TRUE<b> </b>cuando la comparación especificada es TRUE para todas
+las parejas (<i><span lang=EN-US style='mso-ansi-language:EN-US'>expresión
+escalar</span></i>, <i>x</i>) donde <i>x</i> es un valor del conjunto de
+columna única; de lo contrario, devuelve FALSE.</p>
+
+<h3 class='planteo'><a name="_any"></a> ANY</h3>
+<p>Compara un valor escalar con un conjunto de valores de una sola columna. </p>
+<h5>Sintaxis</h5>
+
+<p><i><span lang=EN-US style='mso-ansi-language:EN-US'>expresión escalar</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'> </span>{ = | &lt; &gt; | ! = | &gt;
+| &gt; = | ! &gt; | &lt; | &lt; = | ! &lt; } 
+{ <span style='color:orange'>ANY</span> } <b>( </b><i>subquery </i><b>) </b></p>
+
+<h5>Argumentos</h5>
+
+<p><i><span lang=EN-US style='mso-ansi-language:EN-US'>expresión escalar</span></i></p>
+
+<p class=indent>Es cualquier expresión válida de Microsoft® SQL Server™.</p>
+
+<p>{ = | &lt;&gt; | != | &gt; | &gt;= | !&gt; | &lt; | &lt;= | !&lt; }</p>
+
+<p class=indent>Es cualquier operador de comparación válido. </p>
+
+<p>ANY</p>
+
+<p class=indent>Especifica que debe hacerse una comparación.</p>
+
+<p><i>subquery</i></p>
+
+<p class=indent>Es una subconsulta cuyo conjunto de resultados tiene una
+columna. El tipo de datos de la columna devuelta debe coincidir con el de <i>la
+</i><i><span lang=EN-US style='mso-ansi-language:EN-US'>expresión escalar.</span></i>.</p>
+
+<h5>Tipos de resultado</h5>
+
+<p>Boolean</p>
+
+<h5>Valor del resultado</h5>
+
+<p>ANY devuelve TRUE cuando la comparación especificada es TRUE para una
+pareja (<i><span lang=EN-US style='mso-ansi-language:EN-US'>expresión escalar</span></i>,
+<i>x</i>) donde <i>x</i> es un valor del conjunto de resultados de una sola
+columna. De lo contrario, devuelve FALSE.</p>
+
+<h3 class='planteo'><a name="_exists"></a>EXISTS</h3>
+
+<p>Especifica una subconsulta para probar la existencia de filas. </p>
+
+<h5>Sintaxis</h5>
+
+<p><span style='color:orange'>EXISTS</span> <i>subquery</i></p>
+
+<h5>Argumentos</h5>
+
+<p><i>subquery</i></p>
+
+<p class=indent>Es una instrucción SELECT restringida (la cláusula COMPUTE y la
+palabra clave INTO no están permitidas. </p>
+
+<h5>Tipos de resultado</h5>
+
+<p>Boolean</p>
+
+<h5>Valores de resultado</h5>
+
+<p>Devuelve TRUE<b> </b>si alguna subconsulta contiene alguna fila.</p>
+
+<h3 class='planteo'><a name="_in">IN</h3>
+
+<p>Determina si un valor dado coincide con algún valor de una subconsulta o
+lista.</p>
+
+<h5><span lang=EN-US style='mso-ansi-language:EN-US'>Sintaxis<o:p></o:p></span></h5>
+
+<p><i><span lang=EN-US style='mso-ansi-language:EN-US'>expresión</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'> [ NOT ] <span style='color:orange'>IN
+ </span><br>&nbsp;&nbsp;&nbsp;&nbsp;<b>( <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><i>subquery</i><b> <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>| <i>expresión</i> [ <b>,</b>...<i>n
+</i>] <br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>) </b></span></p>
+
+<h5>Argumentos</h5>
+
+<p><i><span lang=EN-US style='mso-ansi-language:EN-US'>expresión</span></i></p>
+
+<p class=indent>Es cualquier expresión válida de Microsoft® SQL Server™.</p>
+
+<p><i>subquery</i></p>
+
+<p class=indent>Es una subconsulta cuyo conjunto de resultados tiene una
+columna. Esta columna debe tener el mismo tipo de datos que la<i> </i><i><span
+lang=EN-US style='mso-ansi-language:EN-US'>expresión</span></i></p>
+
+<p><i><span lang=EN-US style='mso-ansi-language:EN-US'>expresión</span></i> [<b>,</b>...<i>n</i>]</p>
+
+<p class=indent>Se trata de una lista de expresiones en la que se buscará una
+coincidencia. Todas las expresiones deben ser del mismo tipo que la <i><span
+lang=EN-US style='mso-ansi-language:EN-US'>expresión</span></i>.</p>
+
+<h5>Tipos de resultado</h5>
+
+<p>Boolean</p>
+
+<h5>Valor del resultado</h5>
+
+<p>Si el valor de la <i><span lang=EN-US style='mso-ansi-language:EN-US'>expresión</span><span
+lang=EN-US> </span></i>es igual a cualquier valor devuelto por <i>subquery</i>
+o es igual a cualquier <i><span lang=EN-US style='mso-ansi-language:EN-US'>expresión</span></i>
+de la lista separada por comas, el valor del resultado es TRUE. En caso
+contrario, el valor del resultado es FALSE.</p>
+
+<p>Con NOT IN se niega el valor devuelto.</p>
+
+</div>
+</body>
+</html>

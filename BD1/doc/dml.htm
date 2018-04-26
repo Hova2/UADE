@@ -1,0 +1,279 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+<title>transacciones</title>
+<style type="text/css">
+    .titulo { font-family: verdana, arial, helvética; font-size: 12;
+		          color: #0000ff; }
+    .planteo { font-family: verdana, arial, helvética; font-size: 14;
+		           font-weight: bold; color: orange; }
+    .palabra { font-family: verdana, arial, helvética; font-size: 12;
+		           color: orange; }							
+    .detalle { font-family: verdana, arial, helvética; font-size: 12; }
+    .lista { font-family: verdana, arial, helvética; font-size: 12;
+                  background-color: #f6f6f6; color: #666666; }
+    .des { font-family: verdana, arial, helvética; font-size: 12;
+                  font-weight: bold; background-color: #ffffff;
+                  color: #000000; }
+    .ejemplo { font-family: verdana, arial, helvética; font-size: 12;
+                          color: #009966; }
+    .mensaje { font-family: verdana, arial, helvética; font-size: 12;
+		           color: #0099dd; }
+
+</style>
+</head>
+<body>
+
+<a name="_insert"></a>
+<table bgcolor="f6f6f6" border="1" cellpadding="5" width="100%">
+<tr><td class="planteo">
+ insert into values
+</td></tr>
+<tr><td class="titulo">
+Agrega una fila a una tabla o a una vista.
+</td></tr>
+<tr><td><pre class="detalle">
+
+<B>INSERT</B> [ INTO ] { nombre_tabla | nombre_vista [ ( nombre_columna, ...n ) ] 
+    <B>VALUES</B> ( { expresion | null } [ , ...n ] ) }
+</pre></td></tr>
+
+<tr><td>
+<table border="0" cellpadding="3" align="left" width="100%" class="lista">
+<tr><td class="des" valign="top" width="25%">INTO</td>
+<td>Palabra opcional a continuación del INSERT.</td></tr>
+<tr><td class="des" valign="top" width="25%">nombre_tabla</td>
+<td>Es el nombre de la tabla que va a recibir los datos.</td></tr>
+<tr><td class="des" valign="top" width="25%">nombre_vista</td>
+<td>Se trata del nombre de una vista. La vista a la que hace referancia debe ser
+ actualizable.</td></tr>
+<tr><td class="des" valign="top" width="25%">nombre_columna</td>
+<td>Se trata de una lista de una o más columnas en las que se insertarán los 
+datos; debe estar entre paréntesis y delimitada con comas.
+<BR>
+Si una columna no está en la lista, se debe proporcionar un valor basado en la
+definición de la columna; en caso contrario, no se puede cargar la fila. 
+<BR>SQL Server proporciona automáticamente un valor para la columna si ésta: 
+<UL>
+<LI>Tiene una propiedad IDENTITY. Se utiliza el siguiente valor de identidad
+incremental.</LI>
+<LI>Tiene un valor predeterminado. Se utiliza el valor predeterminado de la
+columna.</LI>
+<LI>Acepta valores NULL. Se utiliza un valor NULL.</LI>
+</UL> 
+</td></tr>
+<tr><td class="des" valign="top" width="25%">VALUES</td>
+<td>Presenta la lista de valores de datos que se van a insertar. 
+<UL>
+<LI>Debe haber un valor de datos para cada columna definida en la lista de
+columnas (si se especificó) o en la tabla.</LI>
+<LI>La lista de valores debe estar entre paréntesis.</LI>
+<LI>Debe respetar el orden definido en la lista de columnas, sino el de la tabla.</LI>
+</UL>
+</td></tr>
+<tr><td class="des" valign="top" width="25%">expresion</td>
+<td>Es una constante, variable o expresión que no contenga una instrucción
+SELECT o EXECUTE. 
+</td></tr>
+<tr><td class="des" valign="top" width="25%">null</td>
+<td>Unicamente si la columna admite valores nulos. 
+</td></tr>
+</table></td></tr>
+
+<tr><td class="mensaje">
+Ejemplo que agrega un fila compuesta por una columna varchar(n) y una columna
+char(n), a la tabla Proveedores.
+</td></tr>
+<tr><td><pre class="detalle">
+
+<B>INSERT INTO</B> Proveedores(nombre, cuit)
+<B>VALUES</B>('PROIND SRL', '20-25890012-1')
+GO
+</pre></td></tr>
+<tr><td class="mensaje">
+Ejemplo que agrega un fila compuesta por un char(n), un smallint y un
+smalldatetime, a la tabla Compras.
+</td></tr>
+<tr><td><pre class="detalle">
+
+<B>INSERT INTO</B> Compras(cuit, nro_compra, fecha)
+<B>VALUES</B>('20-25890012-1', 1405, '20030624')
+GO
+</pre></td></tr>
+</table>
+
+<br />
+<a name="_select"></a>
+<table bgcolor="f6f6f6" border="1" cellpadding="5" width="100%">
+<tr><td class="planteo">
+  insert into select
+</td></tr>
+<tr><td class="titulo">
+Agrega una o mas fila(s) a una tabla o a una vista. 
+</td></tr>
+<tr><td><pre class="detalle">
+
+<B>INSERT</B> [ INTO ] { destino [ ( nombre_columna, ...n ) ] 
+    <B>SELECT</B> { lista de expresiones | * } FROM origen  
+                    [ WHERE ...] [ GROUP BY ...] [ HAVING ...]
+</pre></td></tr>
+
+<tr><td>
+<table border="0" cellpadding="3" align="left" width="100%" class="lista">
+<tr><td class="des" valign="top" width="25%">destino</td>
+<td>Nombre de la tabla o vista donde se insertarán los datos.</td></tr>
+<tr><td class="des" valign="top" width="25%">nombre_columna</td>
+<td>Ver detalle de la instrucción INSERT INTO.</td></tr>
+<tr><td class="des" valign="top" width="25%">lista de expresiones</td>
+<td>Presenta la lista de valores de datos que se van a insertar obtenidos de una
+proyección de valores mediante la instrucción SELECT.
+<UL>
+<LI>Debe haber un valor de datos para cada columna definida en la lista de
+columnas (si se especificó) o en la tabla destino.</LI>
+<LI>Debe respetar el orden definido en la lista de columnas, sino el de la tabla
+destino.</LI>
+</UL></td></tr>
+<tr><td class="des" valign="top" width="25%">origen</td>
+<td>Nombre de la tabla o vista de donde se obtienen los datos.</td></tr>
+</table></td></tr>
+
+<tr><td class="mensaje">
+Este ejemplo agrega a la Tabla Compras_Año_2002 las filas proyectadas de la
+tabla Compras correspondientes al año 2002.
+</td></tr>
+<tr><td><pre class="detalle">
+
+<B>INSERT INTO</B> Compras_Año_2002(cuit, nro_compra, fecha)
+<B>SELECT</B> cuit, nro_compra, fecha <B>FROM</B> compras <B>WHERE</B> year(fecha) = 2002;
+GO
+</pre></td></tr>
+</table>
+
+<br />
+<a name="_delete"></a>
+<table bgcolor="f6f6f6" border="1" cellpadding="5" width="100%">
+<tr><td class="planteo">
+ delete
+</td></tr>
+<tr><td class="titulo">
+Quita filas de una tabla.
+</td></tr>
+
+<tr><td><pre class="detalle">
+
+<B>DELETE</B> 
+    [ <B>FROM</B> ] tabla_destino
+        [ FROM { < tabla_origen > } [ ,...n ] ] 
+    [ <B>WHERE</B> < condición > ]
+</pre></td></tr>
+
+<tr><td>
+<table border="0" cellpadding="3" align="left" width="100%" class="lista">
+<tr><td class="des" valign="top" width="25%">tabla_destino</td>
+<td>Es la tabla en donde se quitarán las filas.</td></tr>
+<tr><td class="des" valign="top" width="25%">tabla_origen</td>
+<td>La cláusula opcional FROM tabla_origen especifica una combinación, en lugar 
+de una subconsulta en la cláusula WHERE para identificar las filas que se van a 
+quitar. </td></tr>
+<tr><td class="des" valign="top" width="25%">WHERE</td>
+<td>Especifica las condiciones utilizadas para limitar el número de filas que se
+ van a eliminar. Si no se proporciona una cláusula WHERE, DELETE quita todas las
+ filas de la tabla. </td></tr>
+</table></td></tr>
+
+<tr><td class="mensaje">
+Elimina todas las filas de la tabla.
+</td></tr>
+<tr><td><pre class="detalle">
+
+   <B>DELETE</B>  titleauthor
+</pre></td></tr>
+<tr><td class="mensaje">
+Elimina las filas de la tabla que cumplan con la condición.
+</td></tr>
+<tr><td><pre class="detalle">
+
+   <B>DELETE</B>  titleauthor <B>WHERE</B> id_autor = 200
+</pre></td></tr>
+</table>
+
+<br />
+<a name="_update"></a>
+<table bgcolor="f6f6f6" border="1" cellpadding="5" width="100%">
+<tr><td class="planteo">
+ update
+</td></tr>
+<tr><td class="titulo">
+Cambia datos de una tabla.
+</td></tr>
+
+<tr><td><pre class="detalle">
+
+<B>UPDATE</B> { tabla_destino }
+    <B>SET</B> 
+        { columna = { expresión | DEFAULT | NULL } } [ ,...n ] 
+    [ <B>FROM</B> { < tabla_origen > } [ ,...n ] ] 
+    [ <B>WHERE</B> < condición > ]
+
+</pre></td></tr>
+
+<tr><td>
+<table border="0" cellpadding="3" align="left" width="100%" class="lista">
+
+<tr><td class="des" valign="top" width="25%">tabla_destino</td>
+<td>Es la tabla en donde se van a actualizar las filas.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">SET</td>
+<td>Especifica la lista de nombres de columnas o variables que se van a 
+actualizar.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">columna</td>
+<td>Es una columna que contiene los datos que se van a cambiar. Se debe encontrar
+ en la tabla o en la vista especificadas en la cláusula UPDATE.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">expresión</td>
+<td>Es una variable, un valor literal, una expresión o una instrucción subSELECT 
+entre paréntesis que devuelve un solo valor. El valor devuelto sustituye al valor 
+existente en la columna o @variable.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">default</td>
+<td>Especifica que el valor predeterminado definido para la columna debe 
+sustituir al valor existente en la columna. También se puede utilizar para 
+cambiar la columna a NULL si no tiene valor predeterminado y en su definición se
+ especifica que puede aceptar valores nulos.</td></tr>
+
+<tr><td class="des" valign="top" width="25%">tabla_origen</td>
+<td>La cláusula opcional FROM tabla_origen especifica una combinación, en lugar 
+de una subconsulta en la cláusula WHERE para identificar las filas que se van a 
+cambiar. </td></tr>
+
+<tr><td class="des" valign="top" width="25%">WHERE</td>
+<td>Especifica las condiciones utilizadas para limitar el número de filas que se
+ van a modificar. Si no se proporciona una cláusula WHERE, UPDATE cambia las
+columnas especificadas de todas las filas de la tabla. </td></tr>
+
+</table></td></tr>
+
+<tr><td class="mensaje">
+Modifica la columna fecha de todas las filas de la tabla.
+</td></tr>
+<tr><td><pre class="detalle">
+
+   <B>UPDATE</B> Compras
+      <B>SET</B> fecha = getDate()
+</pre></td></tr>
+
+<tr><td class="mensaje">
+Modifica la columna fecha de las filas de la tabla que cumplan con la condición.
+</td></tr>
+<tr><td><pre class="detalle">
+
+   <B>UPDATE</B> Compras
+      <B>SET</B> fecha = getDate()
+      <B>WHERE</B> nro_compra = 1056
+</pre></td></tr>
+</table>
+
+</body>
+</html>
