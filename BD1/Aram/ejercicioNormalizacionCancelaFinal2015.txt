@@ -1,0 +1,33 @@
+Ejercicio Normalizacion Final Regular 2015 Cancela
+
+1) R { e,h,l,m,q,x,y,z}
+a) {x,z} -> {l,e,h}
+b) {m,z}->{x,e,l}
+c) {y}->{x,z}
+d) {y}->{m,l}
+e) {x}->{m}
+f) {m}->{x}
+g) {q,z}->{z}
+h) {z}->{e,h}
+
+
+2) {A, B, E, F, G, H, J, T}
+a) {J, T} -> {A, B, E}
+b) {J, F} -> {G, H}
+c) {F} ->-> {T}
+d) {F} -> {G}
+e) {F} ->-> {J}
+f) {A, E} -> {B}
+g) {F, E} -> {E}
+h) {B, E} -> {A}
+
+
+3) {E, H, L, M, Q ,X ,Y, Z}
+a) {X, Z} -> {L, E, H}
+b) {M, Z} -> {X, E, L}
+c) {Y} -> {X, Z}
+d) {Y} -> {M, L}
+e) {X} -> {M}
+f) {M} -> {X}
+g) {Q, Z} -> {Z}
+h) {L} -> {E, M}
