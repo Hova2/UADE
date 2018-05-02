@@ -1,4 +1,4 @@
---GRUPO 5 - MIERCOLES - NOCHE 
+﻿--GRUPO 5 - MIERCOLES - NOCHE 
 --Integrantes:
 --LU: 1072204 – Apellido y nombre: Mingo Suarez, Tomas Esteban
 --LU: 1022935 – Apellido y nombre: Miño, Lucas Nicolas
@@ -24,7 +24,7 @@ go
 
 create table Pacientes
 (
-	dni int identity not null,
+	dni int not null,
 	apellido varchar(30) not null,
 	nombre varchar(30) not null,
 	sexo varchar(10) not null,
@@ -42,7 +42,7 @@ create table Coberturas
 	idEstudio int identity not null,
 	Sigla varchar(10) not null,
 	NroPlan int not null,
-	Cobertura varchar(30) not null,
+	Cobertura float not null,
 	
 	constraint Coberturas_pk primary key (idEstudio, Sigla, Nroplan)
 
@@ -208,6 +208,9 @@ GO
 ALTER TABLE Coberturas ADD CONSTRAINT Coberturas_NroPlan_Rango_Numeros_CK CHECK (NroPlan>=1 AND NroPlan<=12)
 GO
 
+ALTER TABLE Coberturas ADD CONSTRAINT Coberturas_Cobertura_Rango_Numeros_CK CHECK (Cobertura>=0 AND Cobertura<=1)
+GO
+
 ALTER TABLE Planes ADD CONSTRAINT Planes_Sigla_Solo_Letras_CK CHECK (Sigla NOT LIKE '%[^A-Z]%')
 GO
 
@@ -245,4 +248,16 @@ ALTER TABLE Pacientes ADD CONSTRAINT Pacientes_Nacimiento_Diff_Fechas_CK CHECK (
 GO
 
 ALTER TABLE Precios ADD CONSTRAINT Precios_Precio_Rango_Numeros_CK CHECK (Precio>=1 AND Precio<=8000)
+GO
+
+--VISTAS
+
+CREATE VIEW vw_medicos_activos
+AS
+SELECT MATRICULA, NOMBRE, APELLIDO,
+		SEXO = CASE Sexo WHEN 'm' THEN 'MASCULINO'
+					WHEN 'F' THEN 'FEMENINO'
+					ELSE 'NO ESPECIFICADO' END
+FROM Medicos
+WHERE activo=1
 GO
