@@ -1,0 +1,3 @@
+1)Que es y como se representa el esquema de una relacion dentro del modelo
+2)cuando se define un indice secundario ? que caracteristica tiene?
+3)defina el concepto de integridad de datos y como se materializa en una base de datos
