@@ -1,0 +1,31 @@
+Modernizacion
+	Armar el documento del plan de adecuacion.
+
+Licitacion
+	Armar los pliegos de licitacion.
+	Evaluacion de los pliegos de licitacion.
+	Aceptacion de los pliegos de evaluacion.
+		
+Control de calidad
+	Verificacion tecnica de los productos entregados por el proveedor	
+
+Instalacion
+		Instalacion del equipamiento de red.
+			Instalacion de los switchs.
+			Instalacion de los routers.
+			Instalacion de las firewall.
+			Instalacion del cableado estructurado.
+		Instalacion del equipamiento de servidores.
+			Instalacion de servidores linux.
+			Instalacion de servidores microsoft.
+			Instalacion de servidores de virtualizacion.
+				Instalacion de servidores VMWare.
+				Instalacion de servidores HyperV.
+			Instalacion de los equipamientos de appliance
+				Servidores de BD Oracle.
+				Servidores de BD IBM.
+		Instalacion del equipamiento de UPS.
+		Instalacion de las PCs.
+Migracion
+
+Capacitacion
