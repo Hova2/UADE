@@ -1,0 +1,7 @@
+Chrome:
+
+chrome://net-internals/#proxy
+
+Git:
+git config --global http.proxy http://172.16.191.254:8080
+git config --global https.proxy http://172.16.191.254:8080
