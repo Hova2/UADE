@@ -1,0 +1,25 @@
+Uno
+1) Escribir una consulta que retorne todas los documentos de la colección Restaurants. 
+5) Escribir una consulta que retorne los campos restaurant_id, name, borough y cuisine para todos los documentos de la colección excluyendo el campo _id. 
+9) Escribir una consulta que retorne todos los restaurants cuyo score se encuentre entre 80 y 100. 
+12) Escribir una consulta que retorne todos los restaurants que cocinen comida Pizza o Italian y se encuentren en el ZIP Code 10016 
+
+Dos
+2) Escribir una consulta que retorne todos los documentos ordenados de forma ascendente. 
+6) Escribir una consulta que retorne todos los restaurants que se encuentran en Brooklyn. 
+10) Escribir una consulta que retorne todos los restaurants que cocinen American y su grado sea B. 
+13) Escribir una consulta que retorne los documentos ordenados por el valor de Cuisine.
+
+Tres
+3) Escribir una consulta que retorne todos los documentos ordenados de forma descendente.
+7) Escribir una consulta que retorne los primeros 5 restaurants que se encuentren en Bronx. 
+11) Escribir una consulta que retorne todos los restaurants que cocinen comida Chinese o American. 
+14) Escribir una consulta que retorne los restaurants que hayan obtenido un score múltiplo de 8. 
+
+Cuatro
+4) Escribir una consulta que retorne los campos restaurant_id, name, borough y cuisine para todos los documentos de la colección. 
+8) Escribir una consulta que retorne los siguientes 5 restaurants saltando los primeros 10 que se encuentren en Bronx. 
+15) Escribir una consulta que retorne que tipo de cocina realizan los restaurants cuyo nombre comiencen con Mad. 
+
+
+
